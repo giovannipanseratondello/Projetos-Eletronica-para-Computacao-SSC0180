@@ -16,3 +16,12 @@
 | 10     | Kit Jumper - Macho-Macho      | R$7,00  |
 | 50     | Total                         | R$45,80 |
 
+
+## Participantes:
+---
+#### Arthur Nunes de Castro Zille - 17870441
+
+#### Felipe Quierelli de Souza - 17831346
+
+#### Giovanni Pansera Tondello - 17893040
+

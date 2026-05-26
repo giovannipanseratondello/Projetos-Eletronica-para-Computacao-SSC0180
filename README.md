@@ -88,7 +88,7 @@ $V_{secundário} ($V_{2}) =  127/7 ~ 18,1 (RMS) | $V_{2} Pico = 18,1 * √2 ~ 25
 
 ### Correntes
 ````
-$i_{carga} (Resistor 120Ω) = \frac{$V_{max}}{$R_{carga}} = 12,2/120 ~ 101mA
+$i_{carga} (\text{Resistor }120\Omega) = \frac{V_{max}}{R_{carga}} = \frac{12,2}{120} \approx 101\,\text{mA}$
 $i_{potenciômetro} = \frac{25,44}{10,000 + 3,700 + 1,200} \approx 1,7 mA$
 ````
 --

@@ -71,6 +71,26 @@ https://shorturl.at/jkgNi
 
 ### Eagle
 
+
+---
+
+
+---
+
+## Cálculos:
+
+### Transformador
+```
+Vprimário (V1) = 127V (RMS)            | V1 Pico = 127 * √2 ~ 180V
+Vsecundário (V2) =  127/7 ~ 18,1 (RMS) | V2 Pico = 18,1 * √2 ~ 25,6V
+                        |_ Razão de espiras (1 : 7)
+````
+
+### Correntes
+````
+Icarga (Resistor 120Ω) = Vmax / Rcarga = 12,2/120 ~ 101mA
+````
+--
 ## Participantes:
 ---
 #### Arthur Nunes de Castro Zille - 17870441

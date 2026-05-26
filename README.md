@@ -59,7 +59,7 @@ O potenciômetro viabiliza o ajuste e o controle analógico da tensão de saída
 ### Falstad
 https://shorturl.at/jkgNi
 
-![Circuito no Falstad](circuit-20260526-0825.png)
+![Circuito no Falstad](circuit-20260526-0831.png)
 
 
 ### Tinckercad

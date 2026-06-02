@@ -70,7 +70,15 @@ https://shorturl.at/jkgNi
 
 
 ### Eagle
+
+
 ![Circuito no Eagle](Circuito_Eagle.png)
+
+
+
+![Circuito no Eagle - PCB](Circuito_PCB.png)
+
+
 
 ---
 

@@ -82,9 +82,6 @@ https://shorturl.at/jkgNi
 
 ---
 
-
----
-
 ## Cálculos:
 
 ### Transformador

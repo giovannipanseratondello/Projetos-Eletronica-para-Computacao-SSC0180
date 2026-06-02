@@ -70,7 +70,7 @@ https://shorturl.at/jkgNi
 
 
 ### Eagle
-![Circuito no Tinkercad](Circuito_Eagle.jpg)
+![Circuito no Eagle](Circuito_Eagle.png)
 
 ---
 

@@ -4,7 +4,7 @@
 
 Fonte de tensão ajustável projetada para a disciplina SSC0180 – Eletrônica para Computação no ICMC-USP, do docente Eduardo do Valle Simões. Nele, busca-se projetar uma fonte de tensão ajustável entre 3v e 12v, com uma corrente de 100mA(máx.). Segue-se a tabela dos materiais utilizados e seus respectivos custos, os cálculos que justificam a arquitetura da fonte, a simulação realizada no Falstad e as esquemáticas do projeto no Tinkercad e no Eagle.
 
-## Componentes:
+## Componentes
 ---
 | Quantidades   | Componentes   | Preço |
 | ------------- |:-------------:| -----:|
@@ -107,7 +107,30 @@ Ripple desejado: < 10% => 24,2 * 0,1 = 2,42V
 Frequênica: 120Hz (60Hz  * 2)
 Capacitãncia (C) = Itotal / f * ripple = 0,118 / 120 * 2,42 ~ 406µ
 ````
---
+---
+---
+
+Jogo da Velha
+---
+
+## Introdução
+
+Para este projeto, utilizaremos a plataforma de prototipagem Arduino Uno para desenvolver o famigerado jogo da velha, porém com o diferncial de ser contra uma "Inteligência Artificial".
+
+## Componentes
+
+| Componentes   |
+| ------------- |
+| Arduino Uno                |
+| Teclado Matricial 4x4      |
+| Display OLED SSD1306 (I2C) |
+| Buzzer                     |
+
+## Código da "IA"
+```
+// Aqui vai estar o código
+```
+---
 ## Participantes:
 ---
 #### Arthur Nunes de Castro Zille - 17870441

@@ -110,7 +110,7 @@ Capacitãncia (C) = Itotal / f * ripple = 0,118 / 120 * 2,42 ~ 406µ
 ---
 ---
 
-Jogo da Velha
+# Jogo da Velha
 ---
 
 ## Introdução

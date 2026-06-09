@@ -81,7 +81,7 @@ https://shorturl.at/jkgNi
 
 ### Real Life
 
-![Circuito na Vida Real](215b6a7d-49b4-46f7-83a9-4309ec24f735.jpg)
+![Circuito na Vida Real](circuitovidareal.jpg)
 ---
 
 ## Cálculos:

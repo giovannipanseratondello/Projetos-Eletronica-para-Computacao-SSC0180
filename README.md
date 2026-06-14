@@ -131,6 +131,10 @@ Para este projeto, utilizaremos a plataforma de prototipagem Arduino Uno para de
 | Display OLED SSD1306 (I2C) |
 | Buzzer                     |
 
+## Circuito
+
+![Circuito no Wokwi](circuito_jogo.png)
+
 ## Código da "IA"
 ```// ============================================================================
 // FUNÇÕES AUXILIARES DE SUPORTE

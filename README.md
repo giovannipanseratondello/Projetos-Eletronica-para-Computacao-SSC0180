@@ -132,8 +132,194 @@ Para este projeto, utilizaremos a plataforma de prototipagem Arduino Uno para de
 | Buzzer                     |
 
 ## Código da "IA"
-```
-// Aqui vai estar o código
+```// ============================================================================
+// FUNÇÕES AUXILIARES DE SUPORTE
+// ============================================================================
+
+// Avalia o tabuleiro atual para ver se alguém ganhou
+int evaluateBoard(const char b[9]) {
+  for (int i=0; i<8; i++) {
+    int a=WINS[i][0], bb=WINS[i][1], c=WINS[i][2];
+    if (b[a] != ' ' && b[a] == b[bb] && b[bb] == b[c]) {
+      if (b[a] == 'O') return +10; // Vitória da IA
+      if (b[a] == 'X') return -10; // Vitória do Humano
+    }
+  }
+  return 0; // Ninguém ganhou ainda
+}
+
+// Verifica se ainda existem espaços vazios no tabuleiro
+bool movesLeft(const char b[9]) {
+  for (int i=0; i<9; i++) if (b[i] == ' ') return true;
+  return false;
+}
+
+
+// ============================================================================
+// IA FORTE: ALGORITMO MINIMAX (IMBATÍVEL)
+// ============================================================================
+
+// Função recursiva que simula o futuro do jogo para tomar a melhor decisão
+int minimax(char b[9], bool isMax, int depth, int alpha, int beta) {
+  int score = evaluateBoard(b);
+  
+  // Se a IA ('O') ganhou, prefere vencer o mais rápido possível (score - depth)
+  if (score == 10) return score - depth;
+  
+  // Se o Humano ('X') ganhou, tenta adiar a derrota ao máximo (score + depth)
+  if (score == -10) return score + depth;
+  
+  // Se não há mais jogadas, é um empate
+  if (!movesLeft(b)) return 0;
+
+  // Turno do Maximizador: A IA simulando suas próprias jogadas
+  if (isMax) { 
+    int best = -1000;
+
+    for (int i = 0; i < 9; i++) {
+      if (b[i] == ' ') {
+        b[i] = 'O'; // Faz jogada hipotética
+        
+        int val = minimax(b, false, depth + 1, alpha, beta);
+        
+        b[i] = ' '; // Desfaz a jogada
+        
+        best = max(best, val);
+        alpha = max(alpha, best);
+        
+        if (beta <= alpha) break; // Poda Alpha-Beta (cancela caminhos ruins)
+      }
+    }
+    return best;
+    
+  // Turno do Minimizador: A IA simulando as respostas do Humano
+  } else { 
+    int best = 1000;
+
+    for (int i = 0; i < 9; i++) {
+      if (b[i] == ' ') {
+        b[i] = 'X'; // Humano faz jogada hipotética
+        
+        int val = minimax(b, true, depth + 1, alpha, beta);
+        
+        b[i] = ' '; // Desfaz a jogada
+        
+        best = min(best, val);
+        beta = min(beta, best);
+        
+        if (beta <= alpha) break; // Poda Alpha-Beta
+      }
+    }
+    return best;
+  }
+}
+
+// Disparador da IA Forte: testa as casas reais e escolhe a melhor segundo o Minimax
+int bestMoveMinimax() {
+  int bestVal = -1000;
+  int bestMove = -1;
+
+  for (int i = 0; i < 9; i++) {
+    if (board[i] == ' ') {
+      board[i] = 'O'; // Testa a jogada
+      
+      int moveVal = minimax(board, false, 0, -1000, 1000); // Calcula o futuro
+      
+      board[i] = ' '; // Limpa o teste
+      
+      if (moveVal > bestVal) {
+        bestVal = moveVal;
+        bestMove = i;
+      }
+    }
+  }
+  return bestMove;
+}
+
+
+// ============================================================================
+// IA MÉDIA: BASEADA EM REGRAS DE PRIORIDADE (HEURÍSTICA)
+// ============================================================================
+
+int aiMoveMedium() {
+  // REGRA 1: Se a IA puder ganhar nesta jogada, ela ganha!
+  for (int i=0; i<9; i++) if (board[i]==' ') {
+    board[i] = 'O';
+    for (int w=0; w<8; w++) {
+      int a=WINS[w][0], b=WINS[w][1], c=WINS[w][2];
+      if (board[a] != ' ' && board[a]==board[b] && board[b]==board[c]) {
+        board[i] = ' ';
+        return i;
+      }
+    }
+    board[i] = ' ';
+  }
+  
+  // REGRA 2: Se o humano for ganhar na próxima, a IA bloqueia!
+  for (int i=0; i<9; i++) if (board[i]==' ') {
+    board[i] = 'X';
+    for (int w=0; w<8; w++) {
+      int a=WINS[w][0], b=WINS[w][1], c=WINS[w][2];
+      if (board[a] != ' ' && board[a]==board[b] && board[b]==board[c]) {
+        board[i] = ' ';
+        return i;
+      }
+    }
+    board[i] = ' ';
+  }
+  
+  // REGRA 3: Se o centro estiver livre, domina o centro
+  if (board[4] == ' ') return 4;
+  
+  // REGRA 4: Se o humano pegou um canto, joga no canto oposto para travar
+  int corners[4] = {0, 2, 6, 8};
+  for (int i=0; i<4; i++) {
+    int c = corners[i];
+    int opp = 8 - c;
+    if (board[c]=='X' && board[opp]==' ') return opp;
+  }
+  
+  // REGRA 5: Se sobrou algum outro canto livre, joga nele
+  for (int i=0; i<4; i++) if (board[corners[i]]==' ') return corners[i];
+  
+  // REGRA 6: Joga nas laterais (meios)
+  int sides[4] = {1, 3, 5, 7};
+  for (int i=0; i<4; i++) if (board[sides[i]]==' ') return sides[i];
+  
+  // SISTEMA DE EMERGÊNCIA: Joga na primeira vaga que encontrar
+  for (int i=0; i<9; i++) if (board[i]==' ') return i;
+  return -1;
+}
+
+
+// ============================================================================
+// IA FRACA: PURAMENTE ALEATÓRIA (SORTE)
+// ============================================================================
+
+int aiMoveWeak() {
+  int empties[9], n=0;
+  
+  // Lista todas as posições vazias disponíveis
+  for (int i=0; i<9; i++) if (board[i]==' ') empties[n++]=i;
+  
+  // Se não houver vagas, para o jogo
+  if (n==0) return -1;
+  
+  // Escolhe e retorna uma das vagas de forma totalmente aleatória
+  return empties[random(0, n)];
+}
+
+
+// ============================================================================
+// GERENCIADOR DE TURNOS DA IA
+// ============================================================================
+
+// Função que o jogo chama. Ela decide qual inteligência usar com base no nível escolhido
+int aiMove() {
+  if (aiLevel == 1) return aiMoveWeak();   // Aciona nível fácil
+  if (aiLevel == 2) return aiMoveMedium(); // Aciona nível médio
+  return bestMoveMinimax();                // Aciona nível difícil/forte
+}
 ```
 ---
 ## Participantes:

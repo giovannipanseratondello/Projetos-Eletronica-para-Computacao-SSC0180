@@ -82,6 +82,10 @@ https://shorturl.at/jkgNi
 ### Real Life
 
 ![Circuito na Vida Real](circuitovidareal.jpg)
+
+### Vídeo de Explicação
+
+https://youtu.be/debH5PX0NH0
 ---
 
 ## Cálculos:

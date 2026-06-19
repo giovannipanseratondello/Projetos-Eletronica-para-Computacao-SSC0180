@@ -131,6 +131,25 @@ Para este projeto, utilizaremos a plataforma de prototipagem Arduino Uno para de
 | Display OLED SSD1306 (I2C) |
 | Buzzer                     |
 
+## Explicações do Funcionamento
+```
+  Características:
+  
+  Jogador - Sempre será o 'X' contra a IA (O - Sempre)
+  Inteligência Artificial - Sempre será o 'O', alternando entre três dificuldades: fácil (IA1), médio (IA2) e difícil (IA3)
+  
+  Teclas:
+  A: Muda o modo de jogo, iniciando em PvP, alternando sequencialmente entre e os três níveis de dificuldades e retornado ao PvP (A 4x)
+  B: Quando está no modo PvE (IA), muda sua dificuldade, até ao longo da partida
+  *: Reinicia a partida, mantendo o placar
+  #: Zera o placar e reinicia a partida
+  
+  Display:
+
+  Vez e Modo no header - Placar X = / O = 
+  POP animation, risco/pisca no trio vencedor, reinício automático
+```
+
 ## Circuito
 
 ![Circuito no Wokwi](circuito_jogo.png)

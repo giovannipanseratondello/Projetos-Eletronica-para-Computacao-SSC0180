@@ -135,6 +135,10 @@ Para este projeto, utilizaremos a plataforma de prototipagem Arduino Uno para de
 
 ![Circuito no Wokwi](circuito_jogo.png)
 
+## Circuito na Vida Real
+
+![Circuito na Vida Real Arduino](circuito_realArd.jpeg)
+
 ## Código da "IA"
 ```// ============================================================================
 // FUNÇÕES AUXILIARES DE SUPORTE

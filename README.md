@@ -139,6 +139,10 @@ Para este projeto, utilizaremos a plataforma de prototipagem Arduino Uno para de
 
 ![Circuito na Vida Real Arduino](circuito_realArd.jpeg)
 
+## Vídeo do Projeto
+
+https://youtu.be/Ej-7Lch0PD8
+
 ## Código da "IA"
 ```// ============================================================================
 // FUNÇÕES AUXILIARES DE SUPORTE
